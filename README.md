@@ -2,7 +2,7 @@
   SafeFront Disaster Management Platform
 </h1>
 
-Rohit, Matt, and Varun -- follow the below to get the project running locally:
+Rohit, Matt, and Varun -- follow the below to get the project running locally. Gatsby is the framework we are using on top of React to make everything faster and easier. 
 
 ## 🚀 Quick start
 
