@@ -1,12 +1,28 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import { Timeline } from 'react-twitter-widgets'
 
 const Social = () => (
-  <div>
-    <h1> HELLO MATT ROHIT VARUN</h1>
-    <li>Tweet </li>
-    <li>Tweet </li>
-    <li>Tweet </li>
+  <div className='box'
+  style={{
+    height: '490px',
+    width: '360px',
+    marginTop: '20px',
+    marginBottom:'20px',
+    marginLeft: 'px',
+    paddingTop: '2px'
+  }}>
+  <Timeline
+    dataSource={{
+      sourceType: 'profile',
+      screenName: 'redcross'
+    }}
+    options={{
+      username: 'Redcross',
+      height: '380'
+    }}
+    onLoad={() => console.log('Timeline is loaded!')}
+  />
   </div>
 )
 
