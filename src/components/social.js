@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { Timeline } from 'react-twitter-widgets'
 import ReactDOM from 'react-dom';
-import { OpenWeatherMap } from 'react-weather';
+// import { OpenWeatherMap } from 'react-weather';
 
 const Social = () => (
   <div className='box'

@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { Component } from 'react';
 import Link from 'gatsby-link'
 
-const SecondPage = () => (
-  <div>
-    <h1>Hi matt</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </div>
-)
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-export default SecondPage
+    this.state = {
+      data: null,
+    };
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(data => this.setState({ data }));
+  }
+
+}
+
+export default App;
