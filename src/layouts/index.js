@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import Header from '../components/header'
-import Social from '../components/social'
 
 import './index.css'
 import './bulma.scss'

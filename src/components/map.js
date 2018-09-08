@@ -15,18 +15,30 @@ class SimpleMap extends Component {
 
   render() {
     return (
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyBBQV4sjwVyvKN1mOHjAOmlfuLUR4CIzMg' }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+      <div>
+        <br />
+        <div
+          className="card padding"
+          style={{
+            height: '500px',
+            width: '85%',
+            margin: 'auto',
+          }}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Kreyser Avrora'}
-          />
-        </GoogleMapReact>
+          <GoogleMapReact
+            bootstrapURLKeys={{
+              key: 'AIzaSyBBQV4sjwVyvKN1mOHjAOmlfuLUR4CIzMg',
+            }}
+            defaultCenter={this.props.center}
+            defaultZoom={this.props.zoom}
+          >
+            <AnyReactComponent
+              lat={59.955413}
+              lng={30.337844}
+              text={'Kreyser Avrora'}
+            />
+          </GoogleMapReact>
+        </div>
       </div>
     )
   }

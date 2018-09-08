@@ -10,8 +10,6 @@ class Tabs extends Component {
   }
 
   componentDidMount() {
-    alert('Component Loaded')
-
     this.setState({
       reports: 500,
     })
