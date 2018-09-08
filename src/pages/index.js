@@ -11,7 +11,6 @@ const Home = () => (
     <Tabs />
     <Map />
     <Social />
-    {fetchWeather()}
   </div>
 )
 

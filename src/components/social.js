@@ -21,17 +21,14 @@ const Social = () => (
     }}
     options={{
       username: 'Redcross',
-      height: '480'
+      height: '480',
+    }}
     onLoad={() => console.log('Timeline is loaded!')}
   />
   </div>
 
 
 )
-render() {
-  return (
-    <OpenWeatherMap city="Jerusalem" country="IL" appid="9e8b1fc51bb1464177702cfcf02a3fa5" />
-  )
-}
+
 
 export default Social
