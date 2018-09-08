@@ -6,7 +6,7 @@ const Tabs = () => (
     <section className="hero is-danger welcome is-small ">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title">Hello, Redcross.</h1>
+          <h1 className="title">Welcome, American Red Cross</h1>
           <h2 className="subtitle">
             Here is a 360 degree view of the latest incidents in your area.
           </h2>
