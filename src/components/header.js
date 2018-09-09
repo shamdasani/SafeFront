@@ -20,8 +20,8 @@ const Header = () => (
             <a className="navbar-item" href="admin.html">
               Map
             </a>
-            <a className="navbar-item" href="admin.html">
-              Incidents & Outages
+            <a className="navbar-item" href="/incidents">
+              Incidents
             </a>
             <a className="navbar-item" href="admin.html">
               Evacuation

@@ -5,3 +5,11 @@
 .padding {
   padding: 10px;
 }
+
+.column-title {
+  font-size: 24px;
+}
+
+.report {
+  font-size: 18px;
+}
