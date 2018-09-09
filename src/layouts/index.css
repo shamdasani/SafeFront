@@ -27,9 +27,3 @@
 .report span:hover {
   cursor: pointer;
 }
-
-.box-Weather {
-  height: 500px;
-  width: 360px;
-  margin: 20px;
-}
