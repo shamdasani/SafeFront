@@ -18,7 +18,7 @@ class Tabs extends Component {
   }
 
   loadData() {
-    fetch('http://localhost:5000/getJSON')
+    fetch('http://localhost:5000')
       .then(response => response.json())
       .then(response => {
         this.setState({

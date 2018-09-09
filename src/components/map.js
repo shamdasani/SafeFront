@@ -17,7 +17,11 @@ export class MapContainer extends Component {
     this.state = {
       data: [],
       isHovering: false,
+      class: "",
     }
+
+    this.showModal = this.showModal.bind(this)
+    this.hideModal = this.hideModal.bind(this)
   }
   static defaultProps = {
     center: {
@@ -33,7 +37,7 @@ export class MapContainer extends Component {
   }
 
   loadData() {
-    fetch('http://localhost:5000/getJSON')
+    fetch('http://localhost:5000')
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -43,14 +47,16 @@ export class MapContainer extends Component {
       })
   }
 
-  handleMouseHover() {
-    this.setState(this.toggleHoverState)
+  showModal() {
+    this.setState({
+      class: "miniModal display",
+    })
   }
 
-  toggleHoverState(state) {
-    return {
-      isHovering: !state.isHovering,
-    }
+  hideModal() {
+    this.setState({
+      class: "miniModal noDisplay",
+    })
   }
 
   render() {
@@ -65,6 +71,10 @@ export class MapContainer extends Component {
             margin: 'auto',
           }}
         >
+        <div className={this.state.class}>
+          {console.log(this.state.class)}
+          CHECK IT OUT
+        </div>
           <Map
             google={this.props.google}
             bootstrapURLKeys={{
@@ -79,8 +89,11 @@ export class MapContainer extends Component {
             {this.state.data.map((report, i) => {
               return (
                 <Marker
+                  title="test"
                   name={'SOMA'}
                   position={{ lat: report.lat, lng: report.lng }}
+                  onMouseover={this.showModal}
+                  onMouseout={this.hideModal}
                 />
               )
             })}

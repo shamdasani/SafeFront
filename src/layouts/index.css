@@ -23,3 +23,11 @@
 .report span:hover {
   cursor: pointer;
 }
+
+.display {
+  display: block;
+}
+
+.noDisplay {
+  display: none;
+}
