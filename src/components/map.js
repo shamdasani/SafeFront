@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 // <div className={this.state.isHovering ? "miniModal noDisplay" : "miniModal"}>
-
 
 const AnyReactComponent = ({ text }) => (
   <div className="absPos">
-    <div className="miniModal">
-      {text}
-    </div>
-    <div className="mapPointer">
-    </div>
+    <div className="miniModal">{text}</div>
+    <div className="mapPointer" />
   </div>
 )
 
@@ -26,9 +22,9 @@ export class MapContainer extends Component {
   static defaultProps = {
     center: {
       lat: 39.952548,
-      lng: -75.193278,
+      lng: -75.142772,
     },
-    zoom: 12,
+    zoom: 1,
   }
 
   componentDidMount() {
@@ -37,7 +33,7 @@ export class MapContainer extends Component {
   }
 
   loadData() {
-    fetch('http://localhost:5000')
+    fetch('http://localhost:5000/getJSON')
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -48,13 +44,13 @@ export class MapContainer extends Component {
   }
 
   handleMouseHover() {
-    this.setState(this.toggleHoverState);
+    this.setState(this.toggleHoverState)
   }
 
   toggleHoverState(state) {
     return {
       isHovering: !state.isHovering,
-    };
+    }
   }
 
   render() {
@@ -65,23 +61,27 @@ export class MapContainer extends Component {
           className="card padding"
           style={{
             height: '500px',
-            width: '85%',
+            width: '80%',
             margin: 'auto',
           }}
         >
-          <Map google={this.props.google}
+          <Map
+            google={this.props.google}
             bootstrapURLKeys={{
               key: 'AIzaSyBBQV4sjwVyvKN1mOHjAOmlfuLUR4CIzMg',
             }}
-            defaultCenter={this.props.center}
-            defaultZoom={this.props.zoom}
+            initialCenter={{
+              lat: 39.952548,
+              lng: -75.142772,
+            }}
+            zoom={11}
           >
-            {this.state.data
-            .map((report, i) => {
+            {this.state.data.map((report, i) => {
               return (
                 <Marker
                   name={'SOMA'}
-                  position={{lat: report.lat, lng: report.lng}} />
+                  position={{ lat: report.lat, lng: report.lng }}
+                />
               )
             })}
           </Map>
@@ -97,9 +97,6 @@ export class MapContainer extends Component {
 //   text={this.state.data.location}
 // />
 
-
-
-
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyBBQV4sjwVyvKN1mOHjAOmlfuLUR4CIzMg')
+  apiKey: 'AIzaSyBBQV4sjwVyvKN1mOHjAOmlfuLUR4CIzMg',
 })(MapContainer)

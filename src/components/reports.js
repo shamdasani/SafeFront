@@ -56,6 +56,7 @@ class Reports extends Component {
       .then(resp => {
         console.log(resp)
       })
+    alert('Sent')
   }
 
   render() {
@@ -129,10 +130,10 @@ class Reports extends Component {
                   return (
                     <tr key={i} className="stripe">
                       <td className="pa3 report">
-                        <span>{report.labels[0]} </span>
-                        <span>{report.labels[1]} </span>
-                        <span>{report.labels[2]} </span>
-                        <span>{report.labels[3]} </span>
+                        <span> {report.labels ? report.labels[1] : ''}</span>
+                        <span> {report.labels ? report.labels[2] : ''}</span>
+                        <span> {report.labels ? report.labels[3] : ''}</span>
+                        <span> {report.labels ? report.labels[4] : ''}</span>
                       </td>
                       <td className="pa3 report">
                         {' '}
