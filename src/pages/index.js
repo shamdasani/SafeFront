@@ -5,6 +5,7 @@ import Tabs from '../components/data-tabs'
 import Map from '../components/map'
 import Social from '../components/social'
 import Reports from '../components/reports'
+// import Weather from '../components/weather'
 
 const Home = () => (
   <div>
@@ -15,8 +16,14 @@ const Home = () => (
     <br />
     <br />
     <br />
-
-    <Social />
+    <div className="columns">
+      <div className="column">
+        <Social />
+      </div>
+      {/* <div className="column">
+        <Weather />
+      </div> */}
+    </div>
   </div>
 )
 

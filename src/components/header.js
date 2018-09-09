@@ -17,17 +17,14 @@ const Header = () => (
         </div>
         <div id="navMenu" className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item" href="admin.html">
+            <a className="navbar-item" href="/">
               Map
             </a>
             <a className="navbar-item" href="/incidents">
               Incidents
             </a>
-            <a className="navbar-item" href="admin.html">
+            <a className="navbar-item" href="/evacuation">
               Evacuation
-            </a>
-            <a className="navbar-item" href="admin.html">
-              Transport
             </a>
           </div>
         </div>
