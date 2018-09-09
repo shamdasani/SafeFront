@@ -1,16 +1,60 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
-import GoogleMapReact from 'google-map-react'
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+// <div className={this.state.isHovering ? "miniModal noDisplay" : "miniModal"}>
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>
 
-class SimpleMap extends Component {
+const AnyReactComponent = ({ text }) => (
+  <div className="absPos">
+    <div className="miniModal">
+      {text}
+    </div>
+    <div className="mapPointer">
+    </div>
+  </div>
+)
+
+export class MapContainer extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      data: [],
+      isHovering: false,
+    }
+  }
   static defaultProps = {
     center: {
       lat: 39.952548,
       lng: -75.193278,
     },
     zoom: 12,
+  }
+
+  componentDidMount() {
+    this.intervalId = setInterval(() => this.loadData(), 5000)
+    this.loadData()
+  }
+
+  loadData() {
+    fetch('http://localhost:5000')
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          data: [...response],
+        })
+        console.log(this.state.data)
+      })
+  }
+
+  handleMouseHover() {
+    this.setState(this.toggleHoverState);
+  }
+
+  toggleHoverState(state) {
+    return {
+      isHovering: !state.isHovering,
+    };
   }
 
   render() {
@@ -25,23 +69,37 @@ class SimpleMap extends Component {
             margin: 'auto',
           }}
         >
-          <GoogleMapReact
+          <Map google={this.props.google}
             bootstrapURLKeys={{
               key: 'AIzaSyBBQV4sjwVyvKN1mOHjAOmlfuLUR4CIzMg',
             }}
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
           >
-            <AnyReactComponent
-              lat={59.955413}
-              lng={30.337844}
-              text={'Kreyser Avrora'}
-            />
-          </GoogleMapReact>
+            {this.state.data
+            .map((report, i) => {
+              return (
+                <Marker
+                  name={'SOMA'}
+                  position={{lat: report.lat, lng: report.lng}} />
+              )
+            })}
+          </Map>
         </div>
       </div>
     )
   }
 }
 
-export default SimpleMap
+// <AnyReactComponent
+//   lat={this.state.data.lat}
+//   lng={this.state.data.lng}
+//   text={this.state.data.location}
+// />
+
+
+
+
+export default GoogleApiWrapper({
+  apiKey: ('AIzaSyBBQV4sjwVyvKN1mOHjAOmlfuLUR4CIzMg')
+})(MapContainer)
