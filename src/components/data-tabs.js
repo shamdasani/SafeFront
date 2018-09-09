@@ -29,6 +29,19 @@ class Tabs extends Component {
   }
 
   render() {
+    var pending
+    if (this.state.reports > 2) {
+      pending = 2
+    } else {
+      pending = 0
+    }
+
+    var active
+    if (this.state.reports > 2) {
+      active = this.state.reports - this.state.pending
+    } else {
+      active = 0
+    }
     return (
       <div>
         <section className="hero is-danger welcome is-small">
@@ -61,13 +74,13 @@ class Tabs extends Component {
             </div> */}
             <div className="tile is-parent">
               <article className="tile is-child box">
-                <p className="title">{2}</p>
+                <p className="title">{pending}</p>
                 <p className="subtitle">Pending Operations</p>
               </article>
             </div>
             <div className="tile is-parent">
               <article className="tile is-child box">
-                <p className="title">{this.state.reports - 2}</p>
+                <p className="title">{active}</p>
                 <p className="subtitle">Active Operations</p>
               </article>
             </div>
